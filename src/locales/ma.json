@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "home": "الدار",
+    "explore": "شوف",
+    "login": "دخول",
+    "signup": "تسجيل",
+    "dashboard": "تابلو"
+  },
+  "hero": {
+    "title": "لقا الدار ديالك المزيانة",
+    "subtitle": "اكتشف عقارات زوينة فبلايص مزيانة",
+    "cta": "شوف العقارات",
+    "searchPlaceholder": "قلب على بلاصة، نوع الدار..."
+  },
+  "explore": {
+    "title": "شوف العقارات",
+    "subtitle": "لقا الدار الجاية ديالك من اللسطة ديالنا",
+    "filters": {
+      "type": "نوع الدار",
+      "priceRange": "الثمن",
+      "bedrooms": "بيوت النعاس",
+      "location": "البلاصة",
+      "clear": "حذف الفيلترات"
+    },
+    "propertyTypes": {
+      "apartment": "شقة",
+      "house": "دار",
+      "villa": "فيلا",
+      "studio": "استوديو"
+    }
+  },
+  "property": {
+    "bedrooms": "بيوت النعاس",
+    "bathrooms": "الحمامات",
+    "area": "المساحة",
+    "price": "الثمن",
+    "perMonth": "فالشهر",
+    "available": "متاح",
+    "contact": "تواصل مع المول",
+    "tour360": "جولة 360°",
+    "viewOnMap": "شوف فالخريطة",
+    "description": "الوصف",
+    "amenities": "الخدمات",
+    "location": "البلاصة"
+  },
+  "auth": {
+    "signIn": "دخول",
+    "signUp": "تسجيل",
+    "email": "البريد",
+    "password": "كلمة السر",
+    "confirmPassword": "أكد كلمة السر",
+    "firstName": "السمية",
+    "lastName": "اللقب",
+    "phone": "رقم التيليفون",
+    "dontHaveAccount": "ماعندكش حساب؟",
+    "alreadyHaveAccount": "عندك حساب؟",
+    "forgotPassword": "نسيتي كلمة السر؟"
+  },
+  "dashboard": {
+    "welcome": "مرحبا بيك فOpenHome",
+    "properties": "العقارات ديالي",
+    "favorites": "المفضلة",
+    "messages": "الرسائل",
+    "settings": "الإعدادات"
+  },
+  "common": {
+    "loading": "كايتحمل...",
+    "error": "كاين مشكل",
+    "retry": "عاود المحاولة",
+    "close": "سد",
+    "save": "احفظ",
+    "cancel": "إلغاء",
+    "next": "التالي",
+    "previous": "اللي فات",
+    "search": "قلب",
+    "filter": "فلتر",
+    "sort": "رتب",
+    "viewMore": "شوف كتر"
+  },
+  "footer": {
+    "company": "OpenHome",
+    "description": "لقا الدار المثالية ديالك مع المنصة ديالنا",
+    "quickLinks": "روابط سريعة",
+    "support": "المساعدة",
+    "legal": "قانوني",
+    "contact": "تواصل معانا",
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الخدمة",
+    "about": "علينا",
+    "help": "مركز المساعدة",
+    "allRightsReserved": "جميع الحقوق محفوظة"
+  }
+}

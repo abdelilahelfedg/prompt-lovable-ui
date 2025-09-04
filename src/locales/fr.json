@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "explore": "Explorer",
+    "login": "Connexion",
+    "signup": "Inscription",
+    "dashboard": "Tableau de bord"
+  },
+  "hero": {
+    "title": "Trouvez Votre Maison Parfaite",
+    "subtitle": "Découvrez des propriétés exceptionnelles dans les lieux les plus prisés",
+    "cta": "Explorer les Propriétés",
+    "searchPlaceholder": "Rechercher par lieu, type de bien..."
+  },
+  "explore": {
+    "title": "Explorer les Propriétés",
+    "subtitle": "Découvrez votre prochaine maison dans notre collection sélectionnée",
+    "filters": {
+      "type": "Type de Propriété",
+      "priceRange": "Gamme de Prix",
+      "bedrooms": "Chambres",
+      "location": "Localisation",
+      "clear": "Effacer les Filtres"
+    },
+    "propertyTypes": {
+      "apartment": "Appartement",
+      "house": "Maison",
+      "villa": "Villa",
+      "studio": "Studio"
+    }
+  },
+  "property": {
+    "bedrooms": "Chambres",
+    "bathrooms": "Salles de bain",
+    "area": "Surface",
+    "price": "Prix",
+    "perMonth": "par mois",
+    "available": "Disponible",
+    "contact": "Contacter le Propriétaire",
+    "tour360": "Visite Virtuelle 360°",
+    "viewOnMap": "Voir sur la Carte",
+    "description": "Description",
+    "amenities": "Équipements",
+    "location": "Emplacement"
+  },
+  "auth": {
+    "signIn": "Se Connecter",
+    "signUp": "S'Inscrire",
+    "email": "Email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "phone": "Numéro de téléphone",
+    "dontHaveAccount": "Vous n'avez pas de compte ?",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "forgotPassword": "Mot de passe oublié ?"
+  },
+  "dashboard": {
+    "welcome": "Bienvenue sur OpenHome",
+    "properties": "Mes Propriétés",
+    "favorites": "Favoris",
+    "messages": "Messages",
+    "settings": "Paramètres"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "retry": "Réessayer",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "viewMore": "Voir Plus"
+  },
+  "footer": {
+    "company": "OpenHome",
+    "description": "Trouvez votre maison parfaite avec notre plateforme immobilière premium",
+    "quickLinks": "Liens Rapides",
+    "support": "Support",
+    "legal": "Légal",
+    "contact": "Nous Contacter",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "about": "À Propos",
+    "help": "Centre d'Aide",
+    "allRightsReserved": "Tous droits réservés"
+  }
+}

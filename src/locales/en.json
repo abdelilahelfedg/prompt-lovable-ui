@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "home": "Home",
+    "explore": "Explore",
+    "login": "Sign In",
+    "signup": "Sign Up",
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "title": "Find Your Perfect Home",
+    "subtitle": "Discover exceptional properties in the most desirable locations",
+    "cta": "Explore Properties",
+    "searchPlaceholder": "Search by location, property type..."
+  },
+  "explore": {
+    "title": "Explore Properties",
+    "subtitle": "Discover your next home from our curated collection",
+    "filters": {
+      "type": "Property Type",
+      "priceRange": "Price Range",
+      "bedrooms": "Bedrooms",
+      "location": "Location",
+      "clear": "Clear Filters"
+    },
+    "propertyTypes": {
+      "apartment": "Apartment",
+      "house": "House",
+      "villa": "Villa",
+      "studio": "Studio"
+    }
+  },
+  "property": {
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "area": "Area",
+    "price": "Price",
+    "perMonth": "per month",
+    "available": "Available",
+    "contact": "Contact Owner",
+    "tour360": "360° Virtual Tour",
+    "viewOnMap": "View on Map",
+    "description": "Description",
+    "amenities": "Amenities",
+    "location": "Location"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phone": "Phone Number",
+    "dontHaveAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "forgotPassword": "Forgot password?"
+  },
+  "dashboard": {
+    "welcome": "Welcome to OpenHome",
+    "properties": "My Properties",
+    "favorites": "Favorites",
+    "messages": "Messages",
+    "settings": "Settings"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try Again",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "viewMore": "View More"
+  },
+  "footer": {
+    "company": "OpenHome",
+    "description": "Find your perfect home with our premium real estate platform",
+    "quickLinks": "Quick Links",
+    "support": "Support",
+    "legal": "Legal",
+    "contact": "Contact Us",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "about": "About Us",
+    "help": "Help Center",
+    "allRightsReserved": "All rights reserved"
+  }
+}
