@@ -1,8 +1,6 @@
+import { useParams, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Home, 
   Heart, 
@@ -15,97 +13,84 @@ import {
   User
 } from 'lucide-react';
 
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+
+import { useAuth } from '@/contexts/AuthContext';
+import { useToast } from '@/hooks/use-toast';
+
 export default function Dashboard() {
   const { t } = useTranslation();
+  const { role } = useParams<{ role: string }>();
+  const { user, profile, signOut } = useAuth();
+  const { toast } = useToast();
+  const navigate = useNavigate();
 
-  // Mock data - in real app this would come from API
-  const stats = [
-    {
-      title: "Active Listings",
-      value: "3",
-      change: "+1",
-      icon: Home,
-      color: "text-blue-600"
-    },
-    {
-      title: "Total Views",
-      value: "1,234",
-      change: "+12%",
-      icon: Eye,
-      color: "text-green-600"
-    },
-    {
-      title: "Messages",
-      value: "8",
-      change: "+2",
-      icon: MessageSquare,
-      color: "text-purple-600"
-    },
-    {
-      title: "Favorites",
-      value: "15",
-      change: "+3",
-      icon: Heart,
-      color: "text-red-600"
+  // Redirection si le rôle ne correspond pas à l’URL
+  useEffect(() => {
+    if (profile && role && profile.role !== role) {
+      const correctPath = `/dashboard/${profile.role}`;
+      navigate(correctPath, { replace: true });
     }
+  }, [profile, role, navigate]);
+
+  const handleSignOut = async () => {
+    try {
+      const { error } = await signOut();
+      if (error) {
+        toast({
+          title: "Error",
+          description: error.message,
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Success",
+          description: "You have been signed out successfully.",
+        });
+        navigate('/');
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "An error occurred while signing out.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  // --- Mock data UI (ancien front) ---
+  const stats = [
+    { title: "Active Listings", value: "3", change: "+1", icon: Home, color: "text-blue-600" },
+    { title: "Total Views", value: "1,234", change: "+12%", icon: Eye, color: "text-green-600" },
+    { title: "Messages", value: "8", change: "+2", icon: MessageSquare, color: "text-purple-600" },
+    { title: "Favorites", value: "15", change: "+3", icon: Heart, color: "text-red-600" }
   ];
 
   const recentActivity = [
-    {
-      id: 1,
-      type: "message",
-      title: "New message from John Smith",
-      description: "Interested in your downtown apartment",
-      time: "2 hours ago",
-      icon: MessageSquare
-    },
-    {
-      id: 2,
-      type: "view",
-      title: "Property viewed",
-      description: "Your villa listing was viewed 5 times",
-      time: "4 hours ago",
-      icon: Eye
-    },
-    {
-      id: 3,
-      type: "favorite",
-      title: "Property favorited",
-      description: "Someone added your apartment to favorites",
-      time: "1 day ago",
-      icon: Heart
-    }
+    { id: 1, type: "message", title: "New message from John Smith", description: "Interested in your downtown apartment", time: "2 hours ago", icon: MessageSquare },
+    { id: 2, type: "view", title: "Property viewed", description: "Your villa listing was viewed 5 times", time: "4 hours ago", icon: Eye },
+    { id: 3, type: "favorite", title: "Property favorited", description: "Someone added your apartment to favorites", time: "1 day ago", icon: Heart }
   ];
 
   const myProperties = [
-    {
-      id: 1,
-      title: "Modern Downtown Apartment",
-      price: "$2,500",
-      status: "Active",
-      views: 234,
-      messages: 12,
-      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=250&fit=crop"
-    },
-    {
-      id: 2,
-      title: "Cozy Family Villa",
-      price: "$4,200",
-      status: "Active",
-      views: 156,
-      messages: 8,
-      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=250&fit=crop"
-    },
-    {
-      id: 3,
-      title: "Studio Near University",
-      price: "$1,200",
-      status: "Rented",
-      views: 89,
-      messages: 3,
-      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&h=250&fit=crop"
-    }
+    { id: 1, title: "Modern Downtown Apartment", price: "$2,500", status: "Active", views: 234, messages: 12, image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=250&fit=crop" },
+    { id: 2, title: "Cozy Family Villa", price: "$4,200", status: "Active", views: 156, messages: 8, image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=250&fit=crop" },
+    { id: 3, title: "Studio Near University", price: "$1,200", status: "Rented", views: 89, messages: 3, image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&h=250&fit=crop" }
   ];
+
+  if (!profile || !role) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading dashboard...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background p-6">
@@ -114,16 +99,21 @@ export default function Dashboard() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-foreground">
-              {t('dashboard.welcome')}
+              {t('dashboard.welcome')}, {profile.display_name || user?.email}
             </h1>
             <p className="text-muted-foreground mt-1">
               Manage your properties and track your real estate journey
             </p>
           </div>
-          <Button className="flex items-center space-x-2">
-            <Plus className="h-4 w-4" />
-            <span>Add Property</span>
-          </Button>
+          <div className="flex space-x-2">
+            <Button onClick={handleSignOut} variant="outline">
+              Sign Out
+            </Button>
+            <Button className="flex items-center space-x-2">
+              <Plus className="h-4 w-4" />
+              <span>Add Property</span>
+            </Button>
+          </div>
         </div>
 
         {/* Stats Grid */}
@@ -160,6 +150,7 @@ export default function Dashboard() {
                 <TabsTrigger value="messages">{t('dashboard.messages')}</TabsTrigger>
               </TabsList>
 
+              {/* Properties */}
               <TabsContent value="properties" className="space-y-4">
                 <Card>
                   <CardHeader>
@@ -211,6 +202,7 @@ export default function Dashboard() {
                 </Card>
               </TabsContent>
 
+              {/* Favorites */}
               <TabsContent value="favorites" className="space-y-4">
                 <Card>
                   <CardHeader>
@@ -234,6 +226,7 @@ export default function Dashboard() {
                 </Card>
               </TabsContent>
 
+              {/* Messages */}
               <TabsContent value="messages" className="space-y-4">
                 <Card>
                   <CardHeader>
@@ -296,8 +289,8 @@ export default function Dashboard() {
                     <User className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">John Doe</h3>
-                    <p className="text-sm text-muted-foreground">john.doe@example.com</p>
+                    <h3 className="font-semibold">{profile.display_name || "John Doe"}</h3>
+                    <p className="text-sm text-muted-foreground">{profile.email || user?.email}</p>
                   </div>
                 </div>
                 <Button variant="outline" className="w-full">
