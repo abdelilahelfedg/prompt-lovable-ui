@@ -17,10 +17,12 @@ import {
   Sparkles
 } from 'lucide-react';
 import { getFeaturedProperties } from '@/data/mockProperties';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function Index() {
   const { t } = useTranslation();
   const featuredProperties = getFeaturedProperties();
+  const { user, profile } = useAuth();
 
   const features = [
     {
@@ -132,7 +134,7 @@ export default function Index() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-12">
-            {featuredProperties.map((property, index) => (
+            {featuredProperties.map((property) => (
               <PropertyCard
                 key={property.id}
                 property={property}
@@ -197,20 +199,33 @@ export default function Index() {
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Join thousands of satisfied customers who found their perfect home through OpenHome.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" asChild>
-              <Link to="/explore" className="flex items-center space-x-2">
-                <Search className="h-5 w-5" />
-                <span>Start Searching</span>
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary" asChild>
-              <Link to="/signup" className="flex items-center space-x-2">
-                <Users className="h-5 w-5" />
-                <span>Join OpenHome</span>
-              </Link>
-            </Button>
-          </div>
+
+          {/* Auth conditional buttons */}
+          {user && profile ? (
+            <div className="space-y-4">
+              <p className="text-lg text-white">
+                Welcome back, {profile.display_name || user.email}!
+              </p>
+              <Button size="lg" variant="secondary" asChild>
+                <Link to={`/dashboard/${profile.role}`}>Go to Dashboard</Link>
+              </Button>
+            </div>
+          ) : (
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" variant="secondary" asChild>
+                <Link to="/explore" className="flex items-center space-x-2">
+                  <Search className="h-5 w-5" />
+                  <span>Start Searching</span>
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary" asChild>
+                <Link to="/signup" className="flex items-center space-x-2">
+                  <Users className="h-5 w-5" />
+                  <span>Join OpenHome</span>
+                </Link>
+              </Button>
+            </div>
+          )}
         </div>
       </section>
     </div>
