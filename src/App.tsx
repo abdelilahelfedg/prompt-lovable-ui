@@ -7,8 +7,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import './lib/i18n';
 
+import { AuthProvider } from "@/contexts/AuthContext";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
+
 import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
+
 import Index from "./pages/Index";
 import Explore from "./pages/Explore";
 import PropertyDetail from "./pages/PropertyDetail";
@@ -51,27 +55,37 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <div className="min-h-screen bg-background text-foreground">
-            <Navbar theme={theme} onThemeToggle={toggleTheme} />
-            <main>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/explore" element={<Explore />} />
-                <Route path="/property/:id" element={<PropertyDetail />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
-        </BrowserRouter>
-      </TooltipProvider>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <div className="min-h-screen bg-background text-foreground">
+              <Navbar theme={theme} onThemeToggle={toggleTheme} />
+              <main>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/explore" element={<Explore />} />
+                  <Route path="/property/:id" element={<PropertyDetail />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route 
+                    path="/dashboard/:role" 
+                    element={
+                      <ProtectedRoute>
+                        <Dashboard />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 };
